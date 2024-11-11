@@ -10,25 +10,22 @@ open class BaseViewModel :ViewModel(){
     val viewMessage= MutableLiveData<ViewMessage>()
     val showLoading= MutableLiveData<Boolean>()
 
-    fun <T>handleResource(resource: Resource<T>){
-        when (resource){
-            is Resource.loading ->{
-                showLoading.postValue(true)
-            }
+    fun <T>extractViewMessage(resource: Resource<T>):ViewMessage?{
+        return when (resource){
             is Resource.ServerFail->{
-                viewMessage.postValue(ViewMessage(message = resource.error.message?:"somthing went wrong"))
+                ViewMessage(message = resource.error.message?:"somthing went wrong")
             }
             is Resource.Fail->{
                 when(resource.exception) {
                     is InternetConnectionError -> {
-                        viewMessage.postValue(ViewMessage(message = "Please check your interner connection"))
+                       ViewMessage(message = "Please check your interner connection")
                     }
 
                     else ->{
-                        viewMessage.postValue(ViewMessage(message = resource.exception.message?:"Please check your interner connection"))
+                       ViewMessage(message = resource.exception.message?:"Please check your interner connection")
                     }
                 }}
-            else ->{}
+            else ->return null
         }
     }
 
