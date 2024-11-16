@@ -1,6 +1,8 @@
 package com.example.data.api
 
 import android.util.Log
+import com.example.data.api.webServices.AushWebServices
+import com.example.data.api.webServices.CategoryWebServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,7 +46,12 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideWebServices( retrofit: Retrofit):WebServices{
-        return retrofit.create(WebServices::class.java)
+    fun provideWebServices( retrofit: Retrofit):CategoryWebServices{
+        return retrofit.create(CategoryWebServices::class.java)
+    }
+
+    @Provides
+    fun AuthWebServices( retrofit: Retrofit):AushWebServices{
+        return retrofit.create(AushWebServices::class.java)
     }
 }

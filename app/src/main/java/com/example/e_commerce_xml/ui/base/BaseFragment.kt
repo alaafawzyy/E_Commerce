@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.example.e_commerce_xml.ui.base.Extentions.showDialog
 
 
 abstract class BaseFragment <VB: ViewBinding,VM: BaseViewModel>:Fragment(){

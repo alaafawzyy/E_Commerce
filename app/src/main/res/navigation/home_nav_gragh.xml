@@ -6,6 +6,10 @@
 
     <fragment
         android:id="@+id/homeFragment2"
-        android:name="com.example.e_commerce_xml.ui.home.HomeFragment"
+        android:name="com.example.e_commerce_xml.ui.home.home.HomeFragment"
         android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/categoriesFragment2"
+        android:name="com.example.e_commerce_xml.ui.Categories.CategoryFragment"
+        android:label="CategoriesFragment" />
 </navigation>

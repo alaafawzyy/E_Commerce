@@ -77,6 +77,9 @@ dependencies {
     implementation ("com.facebook.shimmer:shimmer:0.1.0@aar")
     //rounded image
     implementation ("com.makeramen:roundedimageview:2.3.0")
+    // Preferences DataStore
+    implementation("androidx.datastore:datastore:1.1.1")
+    implementation ("androidx.security:security-crypto:1.1.0-alpha03")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

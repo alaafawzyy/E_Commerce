@@ -1,7 +1,6 @@
 package com.example.data
 
 import android.telephony.TelephonyManager.TimeoutException
-import com.example.data.api.model.Responce
 import com.example.domain.common.InternetConnectionError
 import com.example.domain.common.Resource
 import com.example.domain.common.ServerError
@@ -12,6 +11,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.isActive
 import okio.IOException
 import retrofit2.HttpException
+import retrofit2.Response
 
 
 suspend fun <T>executeApi(apiCall:suspend ()->T):T{
@@ -20,10 +20,13 @@ suspend fun <T>executeApi(apiCall:suspend ()->T):T{
         return responce
 
     }catch (ex:HttpException){
-        if (ex.code() in 400..600){
-            val serverResponce=ex.response()?.errorBody()?.string()
-            val responce=Gson().fromJson<Responce<Any>>(serverResponce,Responce::class.java)
-            throw ServerError(responce.message,responce.statusMsg,ex)
+        if (ex.code() in 400..600) {
+            val serverResponse = ex.response()?.errorBody()?.string()
+            val response = Gson().fromJson<Response<Any>>(serverResponse, Response::class.java)
+
+            throw ServerError(null,null,ex)
+
+           // throw ServerError(response.statusMsg,response.message,ex)
         }
         throw ex
     }

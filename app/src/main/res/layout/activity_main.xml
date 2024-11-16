@@ -24,10 +24,12 @@
                 android:layout_marginEnd="15dp">
 
                 <TextView
-                    android:layout_width="66dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="22dp"
+                    android:textColor="@color/blue"
                     android:layout_marginTop="15dp"
-                    android:text="Aa" />
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="E-Commerce" />
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 

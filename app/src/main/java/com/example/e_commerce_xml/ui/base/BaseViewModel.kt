@@ -4,13 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.common.InternetConnectionError
 import com.example.domain.common.Resource
-import com.example.domain.model.Category
+import com.example.e_commerce_xml.utils.ViewMessage
 
 open class BaseViewModel :ViewModel(){
     val viewMessage= MutableLiveData<ViewMessage>()
     val showLoading= MutableLiveData<Boolean>()
 
-    fun <T>extractViewMessage(resource: Resource<T>):ViewMessage?{
+    fun <T>extractViewMessage(resource: Resource<T>): ViewMessage?{
         return when (resource){
             is Resource.ServerFail->{
                 ViewMessage(message = resource.error.message?:"somthing went wrong")
