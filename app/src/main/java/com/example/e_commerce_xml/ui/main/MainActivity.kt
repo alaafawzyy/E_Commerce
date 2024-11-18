@@ -1,10 +1,12 @@
 package com.example.e_commerce_xml.ui.main
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.e_commerce_xml.R
 import com.example.e_commerce_xml.databinding.ActivityMainBinding
+import com.example.e_commerce_xml.ui.login.activity.AuthActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +29,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.categoriesFragment -> {
                     navController.navigate(R.id.categoriesFragment2)
+                    true
+                }
+                R.id.profileFragment -> {
+                    startActivity(Intent(this,AuthActivity::class.java))
                     true
                 }
                 else -> false

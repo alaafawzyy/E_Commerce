@@ -12,6 +12,8 @@ interface ProductsRepository {
         brandId : String?=null
     ) : Flow<Resource<List<Products>?>>
 
+    suspend fun getSpecifeProducts(
+        productdId : String) : Flow<Resource<Products>>
 
 
 }

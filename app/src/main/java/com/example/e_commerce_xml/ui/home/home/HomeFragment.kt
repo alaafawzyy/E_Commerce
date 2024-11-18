@@ -1,5 +1,7 @@
 package com.example.e_commerce_xml.ui.home.home
 
+
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +13,7 @@ import com.example.domain.model.Products
 import com.example.e_commerce_xml.R
 import com.example.e_commerce_xml.databinding.FragmentHomeBinding
 import com.example.e_commerce_xml.ui.base.BaseFragment
+import com.example.e_commerce_xml.ui.cart.SpecificProductActivity
 import com.example.e_commerce_xml.ui.home.CategoriesAdapter
 import com.example.e_commerce_xml.ui.home.home.adapters.ProductsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,8 +24,16 @@ import kotlinx.coroutines.launch
 class HomeFragment : BaseFragment<FragmentHomeBinding,HomeFragmentViewModel>() {
 
     private val categoriesAdapter = CategoriesAdapter(null)
-    private val mostSellingProductsAdapter by lazy { ProductsAdapter(requireContext()) }
-    private val categoryProductsAdapter by lazy {   ProductsAdapter(requireContext()) }
+    
+    private val categoryProductsAdapter = ProductsAdapter({position, product ->
+        navigateToSpecificProduct(product?.id!!)
+    })
+    
+
+    private val mostSellingProductsAdapter by lazy { ProductsAdapter({position, product ->
+        navigateToSpecificProduct(product?.id!!)
+    }) }
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -112,6 +123,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeFragmentViewModel>() {
             categoryProductsAdapter.bindProducts(categoryProductsList)
         }
     }
+    private fun navigateToSpecificProduct(productId: String) {
+        val intent = Intent(requireActivity(), SpecificProductActivity::class.java).apply {
+            putExtra("PRODUCT_ID", productId)
+        }
+        startActivity(intent)
+    }
+
+
 }
 
 

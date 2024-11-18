@@ -9,5 +9,7 @@ interface ProductOnlineDataSource {
                             categoryId : String?,
                             brandId : String?) : List<Products>?
 
+    suspend fun getSpecificProduct(productId : String) : Products
+
 
 }

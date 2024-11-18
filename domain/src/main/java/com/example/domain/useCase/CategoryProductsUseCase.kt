@@ -12,4 +12,5 @@ class CategoryProductsUseCase @Inject constructor(
     suspend fun invoke() : Flow<Resource<List<Products>?>> {
         return categoryProductsRepository.getCategoryProducts()
     }
+
 }

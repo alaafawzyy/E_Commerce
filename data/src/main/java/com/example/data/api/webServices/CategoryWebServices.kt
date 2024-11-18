@@ -27,4 +27,7 @@ interface CategoryWebServices {
     @GET("/api/v1/categories/{categoryId}/subcategories")
     suspend fun getSubCategoriesByCategoryId(@Path("categoryId") categoryId: String): Response<List<SubcategoryDTO?>?>
 
+    @GET("/api/v1/products/{productId}/")
+    suspend fun getSpecficProduct(@Path("productId") productId: String): Response<ProductsDTO?>
+
 }

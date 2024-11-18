@@ -7,15 +7,40 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.domain.model.Category
 import com.example.domain.model.Products
 import com.example.e_commerce_xml.databinding.ItemProductBinding
+import com.example.e_commerce_xml.ui.Categories.adapter.SubcategoriesAdapter
 
 
-
-class ProductsAdapter(private var context: Context) :
+class ProductsAdapter(private val onProductClick: (position: Int,product: Products?) -> Unit) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
     private var products: List<Products?> = emptyList()
-    inner class ViewHolder(val context: Context , val itemProductBinding: ItemProductBinding) :
+
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            ItemProductBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ),onProductClick
+        )
+    }
+
+    override fun getItemCount() = products.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val product = products[position]
+        holder.bind(product)
+
+        holder.itemView.setOnClickListener {
+            onProductClick(position,product)
+            notifyDataSetChanged()
+    }}
+
+    inner class ViewHolder( val itemProductBinding: ItemProductBinding,private val onCategoryClick: (position: Int,category:Products?) -> Unit) :
         RecyclerView.ViewHolder(itemProductBinding.root) {
 
         fun bind(product: Products?) {
@@ -34,25 +59,15 @@ class ProductsAdapter(private var context: Context) :
                 itemProductBinding.productOldPrice.isVisible = false
             }
             itemProductBinding.reviewValueTv.text = "(${product?.ratingsAverage})"
+
+
+            itemView.setOnClickListener {
+                itemView.isEnabled = false
+                if (product != null) {
+                    onCategoryClick(position,product)
+                }
+                itemView.postDelayed({ itemView.isEnabled = true }, 500) }
         }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            context ,
-            ItemProductBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-    }
-
-    override fun getItemCount() = products.size
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val product = products[position]
-        holder.bind(product)
     }
 
     fun bindProducts(products: List<Products?>) {
