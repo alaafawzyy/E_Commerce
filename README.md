@@ -2,12 +2,6 @@
 
 This is a comprehensive e-commerce application built using **Android Kotlin** with modern development practices. The app allows users to browse products, view categories, manage carts, and complete purchases seamlessly.
 
----
-
-## Features
-E-commerce application allowing users to browse, purchase products, and manage orders through a user-friendly interface. with Clean Arch with multi-modules ,MVI , repository pattern , Hilt , Retrofit.
-
----
 
 ## Technologies Used
 - **Kotlin**: Main programming language.
