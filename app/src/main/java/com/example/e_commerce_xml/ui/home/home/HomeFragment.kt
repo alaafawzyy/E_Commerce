@@ -13,7 +13,7 @@ import com.example.domain.model.Products
 import com.example.e_commerce_xml.R
 import com.example.e_commerce_xml.databinding.FragmentHomeBinding
 import com.example.e_commerce_xml.ui.base.BaseFragment
-import com.example.e_commerce_xml.ui.cart.SpecificProductActivity
+import com.example.e_commerce_xml.ui.specificProduct.SpecificProductActivity
 import com.example.e_commerce_xml.ui.home.CategoriesAdapter
 import com.example.e_commerce_xml.ui.home.home.adapters.ProductsAdapter
 import dagger.hilt.android.AndroidEntryPoint

@@ -16,7 +16,7 @@
         android:theme="@style/Theme.ECommercexml"
         tools:targetApi="31">
         <activity
-            android:name=".ui.cart.SpecificProductActivity"
+            android:name=".ui.specificProduct.SpecificProductActivity"
             android:exported="false" />
         <activity
             android:name=".ui.login.activity.AuthActivity"

@@ -1,16 +1,12 @@
-package com.example.e_commerce_xml.ui.cart
+package com.example.e_commerce_xml.ui.specificProduct
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.domain.model.Products
-import com.example.e_commerce_xml.R
 import com.example.e_commerce_xml.databinding.ActivitySpeificProductBinding
 import dagger.hilt.android.AndroidEntryPoint
 
