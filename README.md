@@ -5,11 +5,7 @@ This is a comprehensive e-commerce application built using **Android Kotlin** wi
 ---
 
 ## Features
-- User Authentication
-- Product listing and search functionality
-- Product filtering by categories and brands
-- Add to cart and manage orders
-- Integration with API for real-time updates
+E-commerce application allowing users to browse, purchase products, and manage orders through a user-friendly interface. with Clean Arch with multi-modules ,MVI , repository pattern , Hilt , Retrofit.
 
 ---
 
